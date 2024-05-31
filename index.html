@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Record Mainnet server</title>
+</head>
+<body>
+    <h1>Employee Record Database : -</h1>
+    <form id="searchForm">
+        <label for="rollNo">Employee ID:</label>
+        <input type="number" id="rollNo" name="rollNo" required>
+        <button type="submit">Search</button>
+    </form>
+    <div id="output"></div>
+<style>
+  Body {
+    background-color: #000;
+    color: #0f0;
+    text-align: centre;
+  }
+  h1 {
+    font-size: 22px;
+    line-height: 2;
+  }
+  h2 {
+    font-size: 22px;
+    line-height: 2;
+  }
+  
+  label {
+    line-height: 2;
+  }
+    input {
+      background-color: #333;
+    color: #0f0;
+    line-height: 1;
+    }
+  button {
+    background-color: #444;
+    color: #0f0;
+    line-height: 1;
+    padding: 5px 50px;
+        margin : 70px;
+        cursor: pointer;
+
+  }
+  #output {
+    font-family: 'Times New Roman', Times, serif;
+        line-height: 3.3;
+        color: #33FDFF;
+  }
+</style>
+  
+    <script>
+        function alertRedirect() {
+            alert('Redirecting To Deep Net Server');
+        }
+
+        const searchForm = document.getElementById('searchForm');
+        const outputDiv = document.getElementById('output');
+        const students = [
+            { rollNo: 1, name: "Divyanshu Pradhan", email: "divyanshupradhan678@gmail.com" , post: "CEO , CTO@Prime Soft Consultancy Group" },
+            { rollNo: 2, name: "Priyanshu Soni ", email: "priyanshu46@gmail.com" , post:"Managing Director" },
+            // Add more student records here
+              { rollNo: 3, name: "Alisha", email: "alisha33@gmail.com" , post: "Developer"},
+                 { rollNo: 4, name: "Milee Soni", email: "Soni33@gmail.com" , post: "Full Stack Developer"},
+                 { rollNo: 5, name: "Shivanshu Tripathi", email: "Tripathi420@gmail.com" , post: "Abroad Officer[international]"},
+                    { rollNo: 6, name: "Varun Singh", email: "singhvarun658@gmail.com" , post: "Cybersecurity"},
+                       { rollNo: 7, name: "Abhay Kumar Patel", email: "Abhay267@gmail.com" , post: "Branding Strategists"},
+                         { rollNo: 8, name: "Ayush Sahu ", email: "iyush4507@gmail.com" , post: "Chief Medical Officer"}, 
+                            { rollNo: 9, name: "Saurabh", email: "Saurabh7856@gmail.com" , post: "Top medical consultant"},
+                               { rollNo: 10, name: "Madhusudan", email: "madhu348@gmail.com" , post: "Digital Marketing and Social Media Handler"},
+                                  { rollNo: 11, name: "Sanchit ", email: "karlex3469@gmail.com" , post: "Technical Support engineer"},
+                                     { rollNo: 12, name: "Anil Sonkar", email: "Sonkaranil652@gmail.com" , post: "Field Officer"},
+                                        { rollNo: 13, name: "Saket Singh", email: "Singh4587@gmail.com" , post: "Startup Strategist"},
+                       { rollNo: 14, name: "Vaibhav singh", email: "vaib753@gmail.com" , post: "Fund Manager"},
+                          { rollNo: 15, name: "Kundan Maurya", email: "kundan650@gmail.com" , post: "Field officer"},
+        ];
+
+        function searchStudent(rollNo) {
+            let foundStudent = null;
+
+            for (const student of students) {
+                if (student.rollNo == rollNo) {
+                    foundStudent = student;
+                    break;
+                }
+            }
+
+            return foundStudent;
+        }
+
+        function displayRecord(student) {
+            if (student) {
+                outputDiv.innerHTML += `
+                    <h2>Employee  Record</h2>
+                    <p>Name: ${student.name}</p>
+                    <p>Email: ${student.email}</p>
+                      <p>post: ${student.post}</p>
+                   
+  
+                `;
+            } else {
+                outputDiv.innerHTML += '<p>Record not Found. Contact Administrator email at: divyanshupradhan678@gmail.com</p>';
+            }
+        }
+
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const rollNo = document.getElementById('rollNo').value;
+            const foundStudent = searchStudent(rollNo);
+
+            setTimeout(alertRedirect, 0); // Immediate alert
+
+            setTimeout(function() {
+                displayRecord(foundStudent);
+            }, 1000); // Delay record display by 1 second
+        });
+    </script>
+
+  
+
+</body>
+</html>
